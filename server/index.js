@@ -1,14 +1,18 @@
 import express from "express";
+import "dotenv/config";
+import { db } from "./configs/db.js";
 
-const app = express();
-const PORT = 5000;
+const app = express(); // library express initialized
 
-app.use("/", (req, res) => {
+const PORT = process.env.PORT;
+
+app.get("/", (req, res) => {
   res.status(200).json({
     message: "Hello World",
   });
 });
 
+// route / path
 app.use("*", (req, res) => {
   res.status(404).json({
     message: "not found",
